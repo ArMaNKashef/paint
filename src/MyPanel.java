@@ -5,6 +5,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MyPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -86,6 +88,11 @@ public class MyPanel extends JPanel {
 		this.setBackground(Color.lightGray);
 		
 		JButton buttonZoom = new JButton("\u0632\u0648\u0645");
+		buttonZoom.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		buttonZoom.setName("btnLine");
 		buttonZoom.setBounds(40, 147, 120, 30);
 		add(buttonZoom);
