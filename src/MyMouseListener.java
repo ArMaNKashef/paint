@@ -36,13 +36,17 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 				this.shape2 = new Circle(this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "circle");
 				break;
+			case "select":
+				this.shape2 = new Rectangle(this.sX, this.sY, this.eX, this.eY,
+						"yellow", "rectangle");
+				break;
 			default:
 				this.shape2 = new Line(this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "line");
 				break;
 
 			}
-			this.shape2.setColor(this.myCanvas.getColor());
+			//this.shape2.setColor(this.myCanvas.getColor());
 			this.myCanvas.setShape(this.shape2);
 		}
 
@@ -100,13 +104,13 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 				this.shape = new Circle(this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "circle");
 				break;
-			default:
-				this.shape = new Line(this.sX, this.sY, this.eX, this.eY,
-						this.myCanvas.getColor(), "line");
-				break;
+//			default:
+//				this.shape = new Line(this.sX, this.sY, this.eX, this.eY,
+//						this.myCanvas.getColor(), "line");
+//				break;
 
 			}
-			this.shape.setColor(this.myCanvas.getColor());
+			//this.shape.setColor(this.myCanvas.getColor());
 			this.myCanvas.getList().add(shape);
 		}
 
