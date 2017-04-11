@@ -1,5 +1,4 @@
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
 public class Line extends Shape {
 
@@ -20,6 +19,7 @@ public class Line extends Shape {
 		g.setColor(this.myColor(this.getColor()));
 		g.drawLine(this.getsX(), this.getsY(), this.geteX(), this.geteY());
 	}
+
 
 	@Override
 	public void draw(Graphics g, double zoomLevel, int zoomStartX,
@@ -50,5 +50,6 @@ public class Line extends Shape {
 		// TODO Auto-generated method stub
 
 	}
+
 
 }

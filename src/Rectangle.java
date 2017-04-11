@@ -1,6 +1,4 @@
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 
 public class Rectangle extends Shape {
 
@@ -58,5 +56,4 @@ public class Rectangle extends Shape {
 		// TODO Auto-generated method stub
 
 	}
-
 }

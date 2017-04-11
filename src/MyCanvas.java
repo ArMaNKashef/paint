@@ -14,7 +14,7 @@ public class MyCanvas extends Canvas {
 	private Shape shape;
 	private String color;
 	private String shapeType;
-
+	
 	private BufferedImage image;
 	private Graphics graphic;
 	private double zoomLevel = 1;
@@ -22,6 +22,24 @@ public class MyCanvas extends Canvas {
 	private int zoomEndX = 500;
 	private int zoomStartY = 0;
 	private int zoomEndY = 500;
+	private int coorReferenceX = 0;
+	private int coorReferenceY = 0;
+
+	public int getCoorReferenceX() {
+		return coorReferenceX;
+	}
+
+	public void setCoorReferenceX(int coorReferenceX) {
+		this.coorReferenceX = coorReferenceX;
+	}
+
+	public int getCoorReferenceY() {
+		return coorReferenceY;
+	}
+
+	public void setCoorReferenceY(int coorReferenceY) {
+		this.coorReferenceY = coorReferenceY;
+	}
 
 	public int getZoomStartX() {
 		return zoomStartX;
@@ -58,30 +76,34 @@ public class MyCanvas extends Canvas {
 	public double getZoomLevel() {
 		return zoomLevel;
 	}
+=======
+>>>>>>> parent of c44ba57... zoom added
 
 	public Graphics getGraphic() {
 		return graphic;
 	}
-
 	public void setGraphic(Graphics graphic) {
 		this.graphic = graphic;
 	}
-
 	public BufferedImage getImage() {
 		return image;
 	}
-
 	public void setImage(BufferedImage image) {
 		this.image = image;
 	}
-	public void setZoomOption(double zoomLevel, int zoomStartX, int zoomEndX, int zoomStartY, int zoomEndY){
+
+	public void setZoomOption(double zoomLevel, int zoomStartX, int zoomEndX,
+			int zoomStartY, int zoomEndY, int coorX, int coorY) {
 		setZoomLevel(zoomLevel);
 		setZoomStartX(zoomStartX);
 		setZoomStartY(zoomStartY);
 		setZoomEndX(zoomEndX);
 		setZoomEndY(zoomEndY);
-		
+		setCoorReferenceX(coorX);
+		setCoorReferenceY(coorY);
+
 	}
+
 	// private Image Scale (Image img , int height, int width){
 	// BufferedImage newImg = new BufferedImage(width, height,
 	// BufferedImage.TYPE_INT_RGB);
@@ -94,8 +116,23 @@ public class MyCanvas extends Canvas {
 	// }
 
 	public MyCanvas(ArrayList<Shape> list) {
-		System.out.println(zoomStartX + " " + zoomStartY + " \n" + zoomEndX + " " + zoomEndY + " "  );
-//		setImage(new BufferedImage(500, 500, BufferedImage.TYPE_4BYTE_ABGR));
+		System.out.println(zoomStartX + " " + zoomStartY + " \n" + zoomEndX
+				+ " " + zoomEndY + " ");
+		// setImage(new BufferedImage(500, 500, BufferedImage.TYPE_4BYTE_ABGR));
+=======
+	
+	private Image Scale (Image img , int height, int width){
+		BufferedImage newImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		Graphics2D g2 = newImg.createGraphics();
+		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		g2.drawImage(img, 0, 0, width, height, null);
+		g2.dispose();
+		return newImg;
+	}
+	
+	public MyCanvas(ArrayList<Shape> list) {
+		setImage(new BufferedImage(500, 500, BufferedImage.TYPE_4BYTE_ABGR));
+>>>>>>> parent of c44ba57... zoom added
 		this.setList(list);
 		MyMouseListener myMouseListener = new MyMouseListener(this);
 		this.addMouseListener(myMouseListener);
@@ -106,21 +143,43 @@ public class MyCanvas extends Canvas {
 
 	public void paint(Graphics g) {
 		// super.paint(g);
+<<<<<<< HEAD
 		// Image img = Scale(getImage(), 100, 100);
-//		setGraphic(getImage().getGraphics());
+		// setGraphic(getImage().getGraphics());
 		for (Shape shape : this.list) {
-			shape.draw(g, zoomLevel, zoomStartX, zoomEndX, zoomStartY, zoomEndY);
+			shape.draw(g, zoomLevel, zoomStartX, zoomEndX, zoomStartY,
+					zoomEndY, coorReferenceX, coorReferenceY);
 		}
 		if (this.shape != null) {
-			this.shape.draw(g, zoomLevel, zoomStartX, zoomEndX, zoomStartY, zoomEndY);
+			this.shape.draw(g, zoomLevel, zoomStartX, zoomEndX, zoomStartY,
+					zoomEndY, coorReferenceX, coorReferenceY);
 		}
-//		setImage(new BufferedImage(500, 500, BufferedImage.TYPE_4BYTE_ABGR));
+		setCoorReferenceX(zoomStartX);
+		setCoorReferenceY(zoomStartY);
+		// setImage(new BufferedImage(500, 500, BufferedImage.TYPE_4BYTE_ABGR));
 		// int newImageWidth = 10;
 		// int newImageHeight = 10;
 
 		// g2.drawImage(image, 0, 0, newImageWidth , newImageHeight , null);
 		// g2.dispose();
 		// g.drawImage(image, 100, 1, 1000, 1000, null);
+=======
+		setImage(new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB));
+		Image img = Scale(getImage(), 100, 100);
+		setGraphic(getImage().getGraphics());
+		for (Shape shape : this.list) {
+			shape.draw(g);
+		}
+		if (this.shape != null) {
+			this.shape.draw(g);
+		}
+		int newImageWidth = 10000;
+		int newImageHeight = 10000;
+		
+//		g2.drawImage(image, 0, 0, newImageWidth , newImageHeight , null);
+//		g2.dispose();
+		//g.drawImage(image, 100, 1, 1000, 1000, null);
+>>>>>>> parent of c44ba57... zoom added
 	}
 
 	public ArrayList<Shape> getList() {
@@ -153,11 +212,6 @@ public class MyCanvas extends Canvas {
 
 	public void setShape(Shape shape) {
 		this.shape = shape;
-	}
-
-	public void setZoomLevel(double zoomLevel) {
-		// TODO Auto-generated method stub
-		this.zoomLevel = zoomLevel;
 	}
 
 }

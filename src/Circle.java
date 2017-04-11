@@ -1,5 +1,4 @@
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
 public class Circle extends Shape {
 
@@ -23,9 +22,10 @@ public class Circle extends Shape {
 				Math.abs(this.getsY() - this.geteY()));
 	}
 
+<<<<<<< HEAD
 	@Override
 	public void draw(Graphics g, double zoomLevel, int zoomStartX,
-			int zoomEndX, int zoomStartY, int zoomEndY) {
+			int zoomEndX, int zoomStartY, int zoomEndY, int coorX, int coorY) {
 
 		// g.setColor(this.myColor(this.getColor()));
 		// Graphics2D g2 = image.createGraphics();
@@ -55,4 +55,6 @@ public class Circle extends Shape {
 
 	}
 
+=======
+>>>>>>> parent of c44ba57... zoom added
 }

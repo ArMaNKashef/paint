@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
 public abstract class Shape {
 	private int sX;
@@ -103,7 +102,10 @@ public abstract class Shape {
 		this.save = save;
 	}
 
+<<<<<<< HEAD
 	public abstract void draw(Graphics g, double zoomLevel, int zoomStartX,
-			int zoomEndX, int zoomStartY, int zoomEndY);
+			int zoomEndX, int zoomStartY, int zoomEndY, int coorX, int coorY);
 
+=======
+>>>>>>> parent of c44ba57... zoom added
 }
