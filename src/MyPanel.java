@@ -33,9 +33,9 @@ public class MyPanel extends JPanel {
 		btnCircle.addActionListener(new MyBtnListener(this.myCanvas, btnCircle));
 		btnExit.addActionListener(new MySaveListener(this.myFrame));
 		
-		btnRectangle.setBounds(40,40,120,40);
-		btnCircle.setBounds(40,100,120,40);
-		btnLine.setBounds(40,160,120,40);
+		btnRectangle.setBounds(40,24,120,30);
+		btnCircle.setBounds(40,65,120,30);
+		btnLine.setBounds(40,106,120,30);
 		btnExit.setBounds(40,420,120,40);
 		
 		JLabel lblColor = new JLabel("\u0631\u0646\u06AF");
@@ -84,5 +84,10 @@ public class MyPanel extends JPanel {
 		this.add(rdBlue);
 
 		this.setBackground(Color.lightGray);
+		
+		JButton buttonZoom = new JButton("\u0632\u0648\u0645");
+		buttonZoom.setName("btnLine");
+		buttonZoom.setBounds(40, 147, 120, 30);
+		add(buttonZoom);
 	}
 }
