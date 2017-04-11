@@ -30,6 +30,7 @@ public class MyBtnListener implements ActionListener {
 			break;
 		case "btnSelect":
 			this.myCanvas.setShapeType("select");
+			break;
 		default:
 			this.myCanvas.setShapeType("line");
 			break;

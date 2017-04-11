@@ -9,6 +9,7 @@ public abstract class Shape {
 	private String color;
 	private String shapeType;
 	private boolean save;
+	private boolean selected;
 
 	public Shape(int sX, int sY, int eX, int eY, String color, String shapeType) {
 		this.setsX(sX);
@@ -17,7 +18,8 @@ public abstract class Shape {
 		this.eY = eY;
 		this.color = color;
 		this.shapeType = shapeType;
-		this.setSave(false);
+		this.setSave(true);
+		this.setSelected(false);
 	}
 
 	public Shape(int sX, int sY, int eX, int eY, String color,
@@ -102,6 +104,14 @@ public abstract class Shape {
 
 	public void setSave(boolean save) {
 		this.save = save;
+	}
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 
 }

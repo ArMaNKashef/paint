@@ -90,7 +90,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 		// TODO Auto-generated method stub
 		this.eX = arg0.getX();
 		this.eY = arg0.getY();
-		if (this.myCanvas.getShapeType() != null) {
+		if ((this.myCanvas.getShapeType() != null) && this.myCanvas.getShapeType() != "select") {
 			switch (this.myCanvas.getShapeType()) {
 			case "line":
 				this.shape = new Line(this.sX, this.sY, this.eX, this.eY,
@@ -113,6 +113,30 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 			//this.shape.setColor(this.myCanvas.getColor());
 			this.myCanvas.getList().add(shape);
 		}
+		if((this.myCanvas.getShapeType() != null) &&this.myCanvas.getShapeType() == "select")
+		{
+		for(Shape shape:this.myCanvas.getList())
+		{
+			int minX = Math.min(shape.getsX(), shape.geteX());
+			int maxX = Math.max(shape.getsX(), shape.geteX());
+			int minY = Math.min(shape.getsY(), shape.geteY());
+			int maxY = Math.max(shape.getsY(), shape.geteY());
+			int xS = Math.min(this.eX, this.sX);
+			int xE = Math.max(this.eX, this.sX);
+			int yS = Math.min(this.eY, this.sY);
+			int yE = Math.max(this.eY, this.sY);
+			int xL = Math.max(minX, xS);
+			int xR = Math.min(maxX, xE);
+			int yT = Math.max(minY, yS);
+			int yB = Math.min(maxY, yE);
+			if(xR>xL && yB>yT)
+			{
+				shape.setSelected(true);
+			}
+			
+			
+		}
+	}
 
 		this.myCanvas.repaint();
 

@@ -15,19 +15,19 @@ public class ShapeEntityManager {
 					list.add(new Rectangle(resultSet.getInt("s_x"), resultSet
 							.getInt("s_y"), resultSet.getInt("e_x"), resultSet
 							.getInt("e_y"), resultSet.getString("color"),
-							resultSet.getString("shape_type"), true));
+							resultSet.getString("shape_type")));
 					break;
 				case "circle":
 					list.add(new Circle(resultSet.getInt("s_x"), resultSet
 							.getInt("s_y"), resultSet.getInt("e_x"), resultSet
 							.getInt("e_y"), resultSet.getString("color"),
-							resultSet.getString("shape_type"), true));
+							resultSet.getString("shape_type")));
 					break;
 				case "line":
 					list.add(new Line(resultSet.getInt("s_x"), resultSet
 							.getInt("s_y"), resultSet.getInt("e_x"), resultSet
 							.getInt("e_y"), resultSet.getString("color"),
-							resultSet.getString("shape_type"), true));
+							resultSet.getString("shape_type")));
 					break;
 				}
 			}
