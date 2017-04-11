@@ -9,7 +9,7 @@ public class LogIn extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private int userId;
 	JTextField txtUserName;
-
+	
 	public JTextField getTxtUserName() {
 		return txtUserName;
 	}
