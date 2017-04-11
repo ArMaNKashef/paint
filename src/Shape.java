@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 public abstract class Shape {
 	private int sX;
@@ -101,5 +102,8 @@ public abstract class Shape {
 	public void setSave(boolean save) {
 		this.save = save;
 	}
+
+	public abstract void draw(Graphics g, double zoomLevel, int zoomStartX,
+			int zoomEndX, int zoomStartY, int zoomEndY);
 
 }

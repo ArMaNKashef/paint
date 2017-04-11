@@ -17,7 +17,6 @@ public class MyBtnListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-
 		switch (this.button.getName()) {
 		case "btnRectangle":
 			this.myCanvas.setShapeType("rectangle");
@@ -27,6 +26,10 @@ public class MyBtnListener implements ActionListener {
 			break;
 		case "btnLine":
 			this.myCanvas.setShapeType("line");
+			break;
+		case "btnZoom":
+			this.myCanvas.setShapeType("zoom");
+			//this.myCanvas.setZoomLevel(2);
 			break;
 		default:
 			this.myCanvas.setShapeType("line");

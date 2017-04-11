@@ -11,6 +11,10 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 	private int sY;
 	private int eX;
 	private int eY;
+	private int zoomStartX = 0;
+	private int zoomEndX = 500;
+	private int zoomStartY = 0;
+	private int zoomEndY = 500;
 
 	public MyMouseListener(MyCanvas myCanvas) {
 		// TODO Auto-generated constructor stub
@@ -22,7 +26,8 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 		// TODO Auto-generated method stub
 		this.eX = arg0.getX();
 		this.eY = arg0.getY();
-		if (this.myCanvas.getShapeType() != null) {
+		if (this.myCanvas.getShapeType() != null
+				&& !this.myCanvas.getShapeType().equals("zoom")) {
 			switch (this.myCanvas.getShapeType()) {
 			case "line":
 				this.shape2 = new Line(this.sX, this.sY, this.eX, this.eY,
@@ -42,11 +47,12 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 				break;
 
 			}
+
 			this.shape2.setColor(this.myCanvas.getColor());
 			this.myCanvas.setShape(this.shape2);
 		}
-
-		this.myCanvas.repaint();
+		if (!this.myCanvas.getShapeType().equals("zoom"))
+			this.myCanvas.repaint();
 
 	}
 
@@ -79,6 +85,13 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 		// TODO Auto-generated method stub
 		this.sX = arg0.getX();
 		this.sY = arg0.getY();
+		if (this.myCanvas.getShapeType() != null) {
+			if (this.myCanvas.getShapeType().equals("zoom")) {
+				this.zoomStartX = arg0.getX();
+				this.zoomStartY = arg0.getY();
+
+			}
+		}
 	}
 
 	@Override
@@ -87,31 +100,49 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 		this.eX = arg0.getX();
 		this.eY = arg0.getY();
 		if (this.myCanvas.getShapeType() != null) {
-			switch (this.myCanvas.getShapeType()) {
-			case "line":
-				this.shape = new Line(this.sX, this.sY, this.eX, this.eY,
-						this.myCanvas.getColor(), "line");
-				break;
-			case "rectangle":
-				this.shape = new Rectangle(this.sX, this.sY, this.eX, this.eY,
-						this.myCanvas.getColor(), "rectangle");
-				break;
-			case "circle":
-				this.shape = new Circle(this.sX, this.sY, this.eX, this.eY,
-						this.myCanvas.getColor(), "circle");
-				break;
-			default:
-				this.shape = new Line(this.sX, this.sY, this.eX, this.eY,
-						this.myCanvas.getColor(), "line");
-				break;
+			if (!this.myCanvas.getShapeType().equals("zoom")) {
+				switch (this.myCanvas.getShapeType()) {
+				case "line":
+					this.shape = new Line(this.sX, this.sY, this.eX, this.eY,
+							this.myCanvas.getColor(), "line");
+					break;
+				case "rectangle":
+					this.shape = new Rectangle(this.sX, this.sY, this.eX,
+							this.eY, this.myCanvas.getColor(), "rectangle");
+					break;
+				case "circle":
+					this.shape = new Circle(this.sX, this.sY, this.eX, this.eY,
+							this.myCanvas.getColor(), "circle");
+					break;
+				default:
+					this.shape = new Line(this.sX, this.sY, this.eX, this.eY,
+							this.myCanvas.getColor(), "line");
+					break;
 
+				}
+				this.shape.setColor(this.myCanvas.getColor());
+				this.myCanvas.getList().add(shape);
+			} else if (this.myCanvas.getShapeType().equals("zoom")) {
+				this.zoomEndX = arg0.getX();
+				this.zoomEndY = arg0.getY();
+				int minX, minY, maxX, maxY;
+				minX = Math.min(zoomStartX, zoomEndX);
+				minY = Math.min(zoomStartY, zoomEndY);
+				maxX = Math.max(zoomStartX, zoomEndX);
+				maxY = Math.max(zoomStartY, zoomEndY);
+				zoomStartX = minX;
+				zoomEndX = maxX;
+				zoomStartY = minY;
+				zoomEndY = maxY;
+				double zoomLevel =  Math.max(500.0/(zoomEndX - zoomStartX), 500/(zoomEndY - zoomStartY));
+				myCanvas.setZoomOption(zoomLevel, minX, maxX, minY, maxY);
+				System.out.println("zoomStartX =" + zoomStartX + " "
+						+ " zoomStartY =" + zoomStartY + " \n" + "zoomEndX ="
+						+ zoomEndX + " " + " zoomEndY = " + zoomEndY + " ");
+				this.myCanvas.repaint();
 			}
-			this.shape.setColor(this.myCanvas.getColor());
-			this.myCanvas.getList().add(shape);
 		}
-
 		this.myCanvas.repaint();
 
 	}
-
 }

@@ -24,21 +24,24 @@ public class MyPanel extends JPanel {
 		JButton btnRectangle = new JButton("\u0645\u0633\u062A\u0637\u06CC\u0644");
 		JButton btnLine = new JButton("\u062E\u0637");
 		JButton btnCircle = new JButton("\u062F\u0627\u06CC\u0631\u0647");
+		JButton btnZoom = new JButton("\u0632\u0648\u0645");
 		JButton btnExit = new JButton("\u062E\u0631\u0648\u062C");
 		
 		btnRectangle.setName("btnRectangle");
 		btnCircle.setName("btnCircle");
 		btnLine.setName("btnLine");
+		btnZoom.setName("btnZoom");
 		
 		btnRectangle.addActionListener(new MyBtnListener(this.myCanvas, btnRectangle));
 		btnLine.addActionListener(new MyBtnListener(this.myCanvas, btnLine));
 		btnCircle.addActionListener(new MyBtnListener(this.myCanvas, btnCircle));
+		btnZoom.addActionListener(new MyBtnListener(this.myCanvas, btnZoom));
 		btnExit.addActionListener(new MySaveListener(this.myFrame));
 		
 		btnRectangle.setBounds(40,24,120,30);
-		btnCircle.setBounds(40,65,120,30);
-		btnLine.setBounds(40,106,120,30);
 		btnExit.setBounds(40,420,120,40);
+		btnLine.setBounds(40,106,120,30);
+		btnCircle.setBounds(40,65,120,30);
 		
 		JLabel lblColor = new JLabel("\u0631\u0646\u06AF");
 		JRadioButton rdBlack = new JRadioButton("\u0645\u0634\u06A9\u06CC");
@@ -50,17 +53,18 @@ public class MyPanel extends JPanel {
 		rdBlack.setBackground(Color.lightGray);
 		rdBlue.setBackground(Color.lightGray);
 		rdGreen.setBackground(Color.lightGray);
+		btnZoom.setBounds(40, 147, 120, 30);
 		rdRed.setBackground(Color.lightGray);
 		
 		rdBlack.setName("rdBlack");
 		rdBlue.setName("rdBlue");
 		rdGreen.setName("rdGreen");
 		rdRed.setName("rdRed");
+		rdGreen.setBounds(40,340,120,30);
 		
 		lblColor.setBounds(80,220,120,30);
 		rdBlack.setBounds(40,260,120,30);
 		rdBlue.setBounds(40,300,120,30);
-		rdGreen.setBounds(40,340,120,30);
 		rdRed.setBounds(40,380,120,30);
 		
 		rdBlack.addActionListener(new MyRdbListener(this.myCanvas, rdBlack));
@@ -78,6 +82,7 @@ public class MyPanel extends JPanel {
 		this.add(btnCircle);
 		this.add(btnRectangle);
 		this.add(btnExit);
+		this.add(btnZoom);
 		
 		this.add(lblColor);
 		this.add(rdRed);
@@ -87,14 +92,8 @@ public class MyPanel extends JPanel {
 
 		this.setBackground(Color.lightGray);
 		
-		JButton buttonZoom = new JButton("\u0632\u0648\u0645");
-		buttonZoom.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		buttonZoom.setName("btnLine");
-		buttonZoom.setBounds(40, 147, 120, 30);
-		add(buttonZoom);
+		
+		System.out.println(btnZoom.getName());
 	}
+	
 }
