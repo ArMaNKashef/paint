@@ -23,19 +23,24 @@ public class MyPanel extends JPanel {
 		JButton btnLine = new JButton("\u062E\u0637");
 		JButton btnCircle = new JButton("\u062F\u0627\u06CC\u0631\u0647");
 		JButton btnExit = new JButton("\u062E\u0631\u0648\u062C");
+		JButton btnSelect = new JButton("انتخاب");
 		
 		btnRectangle.setName("btnRectangle");
 		btnCircle.setName("btnCircle");
 		btnLine.setName("btnLine");
+		btnSelect.setName("btnSelect");
+		
 		
 		btnRectangle.addActionListener(new MyBtnListener(this.myCanvas, btnRectangle));
 		btnLine.addActionListener(new MyBtnListener(this.myCanvas, btnLine));
 		btnCircle.addActionListener(new MyBtnListener(this.myCanvas, btnCircle));
 		btnExit.addActionListener(new MySaveListener(this.myFrame));
+		btnSelect.addActionListener(new MyBtnListener(this.myCanvas,btnSelect));
 		
-		btnRectangle.setBounds(40,40,120,40);
-		btnCircle.setBounds(40,100,120,40);
-		btnLine.setBounds(40,160,120,40);
+		btnRectangle.setBounds(40,20,120,40);
+		btnCircle.setBounds(40,70,120,40);
+		btnLine.setBounds(40,120,120,40);
+		btnSelect.setBounds(40,170,120,40);
 		btnExit.setBounds(40,420,120,40);
 		
 		JLabel lblColor = new JLabel("\u0631\u0646\u06AF");
@@ -75,6 +80,7 @@ public class MyPanel extends JPanel {
 		this.add(btnLine);
 		this.add(btnCircle);
 		this.add(btnRectangle);
+		this.add(btnSelect);
 		this.add(btnExit);
 		
 		this.add(lblColor);
