@@ -25,23 +25,23 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 		if (this.myCanvas.getShapeType() != null) {
 			switch (this.myCanvas.getShapeType()) {
 			case "line":
-				this.shape2 = new Line(this.sX, this.sY, this.eX, this.eY,
+				this.shape2 = new Line(0,this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "line");
 				break;
 			case "rectangle":
-				this.shape2 = new Rectangle(this.sX, this.sY, this.eX, this.eY,
+				this.shape2 = new Rectangle(0,this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "rectangle");
 				break;
 			case "circle":
-				this.shape2 = new Circle(this.sX, this.sY, this.eX, this.eY,
+				this.shape2 = new Circle(0,this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "circle");
 				break;
 			case "select":
-				this.shape2 = new Rectangle(this.sX, this.sY, this.eX, this.eY,
+				this.shape2 = new Rectangle(0,this.sX, this.sY, this.eX, this.eY,
 						"yellow", "rectangle");
 				break;
 			default:
-				this.shape2 = new Line(this.sX, this.sY, this.eX, this.eY,
+				this.shape2 = new Line(0,this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "line");
 				break;
 
@@ -93,15 +93,15 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 		if ((this.myCanvas.getShapeType() != null) && this.myCanvas.getShapeType() != "select") {
 			switch (this.myCanvas.getShapeType()) {
 			case "line":
-				this.shape = new Line(this.sX, this.sY, this.eX, this.eY,
+				this.shape = new Line(0,this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "line");
 				break;
 			case "rectangle":
-				this.shape = new Rectangle(this.sX, this.sY, this.eX, this.eY,
-						this.myCanvas.getColor(), "rectangle");
+				this.shape = new Rectangle(0,this.sX, this.sY, this.eX, this.eY,
+						this.myCanvas.getColor(), "rectangle",false);
 				break;
 			case "circle":
-				this.shape = new Circle(this.sX, this.sY, this.eX, this.eY,
+				this.shape = new Circle(0,this.sX, this.sY, this.eX, this.eY,
 						this.myCanvas.getColor(), "circle");
 				break;
 //			default:

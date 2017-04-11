@@ -2,16 +2,16 @@ import java.awt.Graphics;
 
 public class Rectangle extends Shape {
 
-	public Rectangle(int sX, int sY, int eX, int eY, String color,
+	public Rectangle(int id,int sX, int sY, int eX, int eY, String color,
 			String shapeType) {
-		super(sX, sY, eX, eY, color, shapeType);
+		super(id,sX, sY, eX, eY, color, shapeType);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Rectangle(int sX, int sY, int eX, int eY, String color,
+	public Rectangle(int id,int sX, int sY, int eX, int eY, String color,
 			String shapeType, boolean save) {
 		// TODO Auto-generated constructor stub
-		super(sX, sY, eX, eY, color, shapeType, save);
+		super(id,sX, sY, eX, eY, color, shapeType, save);
 	}
 
 	@Override

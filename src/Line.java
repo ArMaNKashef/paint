@@ -2,14 +2,14 @@ import java.awt.Graphics;
 
 public class Line extends Shape {
 
-	public Line(int sX, int sY, int eX, int eY, String color, String shapeType) {
-		super(sX, sY, eX, eY, color, shapeType);
+	public Line(int id,int sX, int sY, int eX, int eY, String color, String shapeType) {
+		super(id,sX, sY, eX, eY, color, shapeType);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Line(int sX, int sY, int eX, int eY, String color, String shapeType,
+	public Line(int id,int sX, int sY, int eX, int eY, String color, String shapeType,
 			boolean save) {
-		super(sX, sY, eX, eY, color, shapeType, save);
+		super(id,sX, sY, eX, eY, color, shapeType, save);
 	}
 
 	@Override

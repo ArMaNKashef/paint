@@ -34,6 +34,21 @@ public class MyRdbListener implements ActionListener {
 				this.myCanvas.setColor("black");
 				break;
 			}
+			for(Shape sh : this.myCanvas.getList())
+			{
+				if(sh.isSelected() && sh.isSave())
+				{
+					sh.setColor(this.myCanvas.getColor());
+					sh.setSelected(false);
+					sh.setModified(true);
+				}
+				else if(sh.isSelected() && !sh.isSave())
+				{
+					sh.setColor(this.myCanvas.getColor());
+					sh.setSelected(false);
+				}
+			}
+			this.myCanvas.repaint();
 		}
 	}
 

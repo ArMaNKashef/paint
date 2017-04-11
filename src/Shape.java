@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class Shape {
+	private int id;
 	private int sX;
 	private int sY;
 	private int eX;
@@ -10,21 +11,24 @@ public abstract class Shape {
 	private String shapeType;
 	private boolean save;
 	private boolean selected;
+	private boolean modified;
 
-	public Shape(int sX, int sY, int eX, int eY, String color, String shapeType) {
+	public Shape(int id,int sX, int sY, int eX, int eY, String color, String shapeType) {
+		this.setId(id);
 		this.setsX(sX);
 		this.sY = sY;
 		this.eX = eX;
 		this.eY = eY;
 		this.color = color;
 		this.shapeType = shapeType;
-		this.setSave(true);
+		this.setSave(false);
 		this.setSelected(false);
+		this.setModified(false);
 	}
 
-	public Shape(int sX, int sY, int eX, int eY, String color,
+	public Shape(int id,int sX, int sY, int eX, int eY, String color,
 			String shapeType, boolean save) {
-		this(sX, sY, eX, eY, color, shapeType);
+		this(id,sX, sY, eX, eY, color, shapeType);
 		this.setSave(save);
 	}
 
@@ -112,6 +116,22 @@ public abstract class Shape {
 
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+
+	public boolean isModified() {
+		return modified;
+	}
+
+	public void setModified(boolean modified) {
+		this.modified = modified;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

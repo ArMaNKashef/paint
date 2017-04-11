@@ -12,22 +12,22 @@ public class ShapeEntityManager {
 			while (resultSet.next()) {
 				switch (resultSet.getString("shape_type")) {
 				case "rectangle":
-					list.add(new Rectangle(resultSet.getInt("s_x"), resultSet
+					list.add(new Rectangle(resultSet.getInt("id"), resultSet.getInt("s_x"), resultSet
 							.getInt("s_y"), resultSet.getInt("e_x"), resultSet
 							.getInt("e_y"), resultSet.getString("color"),
-							resultSet.getString("shape_type")));
+							resultSet.getString("shape_type"),true));
 					break;
 				case "circle":
-					list.add(new Circle(resultSet.getInt("s_x"), resultSet
+					list.add(new Circle(resultSet.getInt("id"),resultSet.getInt("s_x"), resultSet
 							.getInt("s_y"), resultSet.getInt("e_x"), resultSet
 							.getInt("e_y"), resultSet.getString("color"),
-							resultSet.getString("shape_type")));
+							resultSet.getString("shape_type"),true));
 					break;
 				case "line":
-					list.add(new Line(resultSet.getInt("s_x"), resultSet
+					list.add(new Line(resultSet.getInt("id"),resultSet.getInt("s_x"), resultSet
 							.getInt("s_y"), resultSet.getInt("e_x"), resultSet
 							.getInt("e_y"), resultSet.getString("color"),
-							resultSet.getString("shape_type")));
+							resultSet.getString("shape_type"),true));
 					break;
 				}
 			}
@@ -57,6 +57,16 @@ public class ShapeEntityManager {
 					e.printStackTrace();
 				}
 			}
+			else if(shape.isModified())
+			{
+				try {
+					DBManager.getStatement().executeUpdate("update shape set color = '" + shape.getColor()+"' where id = " + shape.getId());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
 		}
 		DBManager.Close();
 	}
